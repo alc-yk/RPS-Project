@@ -5,32 +5,169 @@ function getComputerChoice(arr) {
 }
 
 function playRound (playerSelection, computerSelection) {
+
     if (playerSelection == 'rock' && computerSelection == 'paper') {
-        console.log('YOU BIG LOSER, PAPER BEATS ROCK');
+        return 'YOU BIG LOSER, PAPER BEATS ROCK';
     }
     else if (playerSelection == 'rock' && computerSelection == 'scissors') {
-        console.log('WINNER WINNER! ROCK DOES BEAT SCISSORS');
+        return 'WINNER WINNER! ROCK DOES BEAT SCISSORS';
     }
     else if (playerSelection == 'paper' && computerSelection == 'scissors') {
-        console.log('YOU BIG LOSER, SCISSORS BEATS PAPER');
+        return 'YOU BIG LOSER, SCISSORS BEATS PAPER';
     }
     else if (playerSelection == 'paper' && computerSelection == 'rock') {
-        console.log('WINNER WINNER! PAPER DOES BEAT ROCK');
+        return 'WINNER WINNER! PAPER DOES BEAT ROCK';
     }
     else if (playerSelection == 'scissors' && computerSelection == 'rock') {
-        console.log('YOU BIG LOSER, ROCK BEATS SCISSORS');
+        return 'YOU BIG LOSER, ROCK BEATS SCISSORS';
     }
     else if (playerSelection == 'scissors' && computerSelection == 'paper') {
-        console.log('WINNER WINNER! SCISSORS DOES BEAT PAPER');
+        return 'WINNER WINNER! SCISSORS DOES BEAT PAPER';
     }
     else {
-        console.log('TIE GO AGAIN!')
+        return 'TIE GO AGAIN!';
     }
 }
+/*
+function game (playerSelection) {
+    let player = 0;
+    let computer = 0;
+
+    for (let i = 0; i < 5; i++) {
+
+        const choices = ['rock', "paper", "scissors"];
+        const computerSelection = getComputerChoice(choices);
+        let playerInput = prompt("Enter choice", "rock, paper, or scissors");
+        let playerSelection = playerInput.toLowerCase();
+        const result = playRound(playerSelection, computerSelection);
+
+        if (result === 'YOU BIG LOSER, PAPER BEATS ROCK') {
+             player++;
+            console.log('YOU BIG LOSER, PAPER BEATS ROCK');
+        }
+        else if (result === 'WINNER WINNER! ROCK DOES BEAT SCISSORS') {
+             player++;
+             console.log('WINNER WINNER! ROCK DOES BEAT SCISSORS');
+        }
+        else if (result === 'YOU BIG LOSER, SCISSORS BEATS PAPER') {
+             computer++;
+             console.log('YOU BIG LOSER, SCISSORS BEATS PAPER');
+        }
+        else if (result === 'WINNER WINNER! PAPER DOES BEAT ROCK') {
+             player++;
+             console.log('WINNER WINNER! PAPER DOES BEAT ROCK');
+        }
+        else if (result === 'YOU BIG LOSER, ROCK BEATS SCISSORS') {
+             computer++;
+             console.log('YOU BIG LOSER, ROCK BEATS SCISSORS');
+        }
+        else if (result === 'WINNER WINNER! SCISSORS DOES BEAT PAPER') {
+             player++;
+             console.log('WINNER WINNER! SCISSORS DOES BEAT PAPER');
+        }
+        else{}
+    }
+
+    if(player > computer){
+      return 'YOU WIN!';
+    }
+    else if(player < computer){
+       return 'YOU LOSE!';
+    }
+    else{
+    }
+
+}
+*/
+
+function game(playerInput) {
+
+        const choices = ['rock', "paper", "scissors"];
+        const computerSelection = getComputerChoice(choices);
+        let playerSelection = playerInput.toLowerCase();
+        const result = playRound(playerSelection, computerSelection);
+
+        if (result === 'YOU BIG LOSER, PAPER BEATS ROCK') {
+            console.log('YOU BIG LOSER, PAPER BEATS ROCK');
+            return 'computer';
+        }
+        else if (result === 'WINNER WINNER! ROCK DOES BEAT SCISSORS') {
+             console.log('WINNER WINNER! ROCK DOES BEAT SCISSORS');
+              return 'player';
+        }
+        else if (result === 'YOU BIG LOSER, SCISSORS BEATS PAPER') {
+             console.log('YOU BIG LOSER, SCISSORS BEATS PAPER');
+              return 'computer';
+        }
+        else if (result === 'WINNER WINNER! PAPER DOES BEAT ROCK') {
+
+             console.log('WINNER WINNER! PAPER DOES BEAT ROCK');
+              return 'player';
+        }
+        else if (result === 'YOU BIG LOSER, ROCK BEATS SCISSORS') {
+
+             console.log('YOU BIG LOSER, ROCK BEATS SCISSORS');
+              return 'computer';
+        }
+        else if (result === 'WINNER WINNER! SCISSORS DOES BEAT PAPER') {
+            console.log('WINNER WINNER! SCISSORS DOES BEAT PAPER');
+             return 'player';
+        }
+        else{
+            console.log('TIE!');
+            return 'tie';
+        }
+
+
+}
+
+let playerScore = 0;
+let computerScore = 0;
+
 
 const choices = ['rock', "paper", "scissors"];
-let playerSelection = prompt("Enter choice", "rock, paper, or scissors");
-const computerSelection = getComputerChoice(choices);
 
-//console.log(playerSelection);
-console.log(playRound(playerSelection, computerSelection));
+for (let i = 0; i < 5; i++) {
+
+    let playerInput = prompt("Enter choice", "rock, paper, or scissors");
+
+    const computerSelection = getComputerChoice(choices);
+    const result = (game(playerInput));
+
+    if (result === 'player'){
+        if(playerScore == 3 || computerScore == 3){
+            break;
+        }
+        else{
+            playerScore++;
+            console.log(playerScore);
+            console.log(computerScore);
+        }
+
+    }
+    else if (result === 'computer'){
+        if(playerScore == 3 || computerScore == 3){
+            break;
+        }
+        else{
+            computerScore++;
+            console.log(playerScore);
+            console.log(computerScore);
+        }
+    }
+    else if(result === 'tie'){
+        i--;
+
+        console.log(playerScore);
+        console.log(computerScore);
+    }
+
+
+}
+
+if(playerScore > computerScore){
+       console.log('YOU WIN!');
+    }
+else if(playerScore < computerScore){
+        console.log('YOU LOSE!');
+    }
