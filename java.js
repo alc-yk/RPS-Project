@@ -118,13 +118,10 @@ function game(playerInput) {
             return 'tie';
         }
 
-
 }
 
 let playerScore = 0;
 let computerScore = 0;
-
-
 const choices = ['rock', "paper", "scissors"];
 
 for (let i = 0; i < 5; i++) {
@@ -134,36 +131,66 @@ for (let i = 0; i < 5; i++) {
     const computerSelection = getComputerChoice(choices);
     const result = (game(playerInput));
 
-    if (result === 'player'){
-        if(playerScore == 3 || computerScore == 3){
-            break;
-        }
-        else{
+    // if (result === 'player'){
+    //     if(playerScore == 3 || computerScore == 3){
+    //         break;
+    //     }
+    //     else{
+    //         playerScore++;
+    //         console.log(playerScore);
+    //         console.log(computerScore);
+    //     }
+
+    // }
+    // else if (result === 'computer'){
+    //     if(playerScore == 3 || computerScore == 3){
+    //         break;
+    //     }
+    //     else{
+    //         computerScore++;
+    //         console.log(playerScore);
+    //         console.log(computerScore);
+    //     }
+    // }
+    // else if(result === 'tie'){
+    //     i--;
+
+    //     console.log(playerScore);
+    //     console.log(computerScore);
+    // }
+
+    switch(result){
+    case 'player':
+        
             playerScore++;
             console.log(playerScore);
             console.log(computerScore);
-        }
 
-    }
-    else if (result === 'computer'){
         if(playerScore == 3 || computerScore == 3){
-            break;
+            i=5;
         }
-        else{
+    break;
+
+    case 'computer':
+
             computerScore++;
             console.log(playerScore);
             console.log(computerScore);
-        }
-    }
-    else if(result === 'tie'){
-        i--;
 
+        if(playerScore == 3 || computerScore == 3){
+            i=5;
+        }     
+    break;
+
+    case 'tie':
+        i--;
         console.log(playerScore);
         console.log(computerScore);
+    break;
     }
-
-
 }
+
+
 
 if(playerScore > computerScore){
        console.log('YOU WIN!');
